@@ -1,32 +1,78 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Character : MonoBehaviour
 {
-    private float attackPower;
-    public float AttackPower
+    public string Name { get; private set; }
+    public int Level { get; private set; } = 1;
+    public int CurExp { get; private set; } = 0;
+    public int MaxExp { get; private set; } = 0;
+    public int Gold { get; private set; } = 0;
+    public float AttackPower { get; private set; }
+    public float DefensePower { get; private set; }
+    public float Health { get; private set; }
+    public float Critical { get; private set; }
+
+    public void Init(string name, float attackPower, float defensePower, float health, float critical)
     {
-        get => attackPower;
-        private set => attackPower = value;
+        Name = name;
+        AttackPower = attackPower;
+        DefensePower = defensePower;
+        Health = health;
+        Critical = critical;
     }
 
-    private float defensePower;
-    public float DefensePower
+    private void Awake()
     {
-        get => defensePower;
-        private set => defensePower = value;
+        GameManager.Instance.Player = this;
     }
 
-    private float health;
-    public float Health
+    public void SetName(string name)
     {
-        get => health;
-        private set => health = value;
+        Name = name;
+    }
+    
+    public void LevelUp()
+    {
+        Level++;
+        UpAttackPower(2);
+        UpDefensePower(1);
+        UpHealth(10);
+        UpCritical(1);
     }
 
-    private float critical;
-    public float Critical
+    public void GainExp(int exp)
     {
-        get => critical;
-        private set => critical = value;
+        int tempExp = CurExp + exp;
+
+        while(tempExp >= MaxExp)
+        {
+            LevelUp();
+            tempExp -= MaxExp;
+        }
+
+        CurExp = tempExp;
+    }
+
+    public void GainGold(int gold)
+    {
+        Gold += gold;
+    }
+
+    public void UpAttackPower(int attackPower)
+    {
+        AttackPower += attackPower;
+    }
+    public void UpDefensePower(int defencePower)
+    {
+        DefensePower += defencePower;
+    }
+    public void UpHealth(int health)
+    {
+        Health += health;
+    }
+    public void UpCritical(int critical)
+    {
+        Critical += critical;
     }
 }

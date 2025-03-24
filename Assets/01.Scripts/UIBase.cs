@@ -4,7 +4,7 @@ public abstract class UIBase : MonoBehaviour
 {
     protected UIManager uiManager;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         uiManager = UIManager.Instance;
     }

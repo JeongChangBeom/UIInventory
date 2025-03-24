@@ -3,8 +3,10 @@ using UnityEngine.UI;
 
 public class UIInventory : UIBase
 {
-    [SerializeField] private Button exitButton;
+    [SerializeField] private ScrollRect scrollRect;
 
+
+    [SerializeField] private Button exitButton;
     private void Start()
     {
         exitButton.onClick.AddListener(OnClickExitButton);
