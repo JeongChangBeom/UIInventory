@@ -9,19 +9,17 @@ public class UIMainMenu : UIBase
     private void Start()
     {
         statusButton.onClick.AddListener(OnClickStatusButton);
-        statusButton.onClick.AddListener(OnClickInventoryButton);
+        inventoryButton.onClick.AddListener(OnClickInventoryButton);
     }
 
     public void OnClickStatusButton()
     {
-        statusButton.gameObject.SetActive(false);
-        inventoryButton.gameObject.SetActive(false);
+        uiManager.OpenStatus();
     }
 
     public void OnClickInventoryButton()
     {
-        statusButton.gameObject.SetActive(false);
-        inventoryButton.gameObject.SetActive(false);
+        uiManager.OpenInventory();
     }
 
     protected override UIState GetUIState()

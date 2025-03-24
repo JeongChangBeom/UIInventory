@@ -1,14 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class UIBase : MonoBehaviour
 {
     protected UIManager uiManager;
 
-    public virtual void Init(UIManager uiManager)
+    private void Awake()
     {
-        this.uiManager = uiManager;
+        uiManager = UIManager.Instance;
     }
 
     protected abstract UIState GetUIState();
