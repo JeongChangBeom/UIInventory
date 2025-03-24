@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 043798f644015984db8f97510f3b74d0, type: 3}
+  m_Name: WoodenBow
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: f86728648d731844393b5172ddfcded2, type: 3}
+  itemName: "\uB098\uBB34 \uD65C"
+  itemDescription: "\uAC00\uBCBC\uC6B4 \uB098\uBB34\uB85C \uC81C\uC791\uB41C \uAE30\uBCF8
+    \uD65C. \uB2E4\uB8E8\uAE30 \uC26C\uC6B0\uBA70, \uC6D0\uAC70\uB9AC \uACF5\uACA9\uC5D0
+    \uC801\uD569\uD558\uB2E4."
+  values:
+  - valueType: 0
+    value: 5
+  - valueType: 3
+    value: 20

@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 043798f644015984db8f97510f3b74d0, type: 3}
+  m_Name: Dagger
+  m_EditorClassIdentifier: 
+  icon: {fileID: 21300000, guid: 61a70628a53167f4e8bf2866f43d8e03, type: 3}
+  itemName: "\uB2E8\uAC80"
+  itemDescription: "\uC9E7\uC9C0\uB9CC \uB0A0\uCE74\uB85C\uC6B4 \uB2E8\uAC80. \uBE60\uB978
+    \uACF5\uACA9 \uC18D\uB3C4\uB85C \uADFC\uC811 \uC804\uD22C\uC5D0\uC11C \uC720\uB9AC\uD558\uB2E4."
+  values:
+  - valueType: 0
+    value: 7
+  - valueType: 3
+    value: 10
