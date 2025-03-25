@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class ItemSlot : MonoBehaviour
 {
     public ItemData data;
+    private Character Player;
 
     [SerializeField] private Image icon;
     [SerializeField] private GameObject equipStateText;
@@ -22,6 +23,7 @@ public class ItemSlot : MonoBehaviour
     private void Awake()
     {
         outline = GetComponent<Outline>();
+        Player = GameManager.Instance.Player;
     }
 
     private void Start()
@@ -34,6 +36,7 @@ public class ItemSlot : MonoBehaviour
     private void Update()
     {
         outline.enabled = selected;
+        equipStateText.SetActive(equiped);
 
         if (selected)
         {
@@ -50,7 +53,6 @@ public class ItemSlot : MonoBehaviour
     private void OnEnable()
     {
         equipStateText.SetActive(equiped);
-
     }
 
     public void Set()
@@ -69,12 +71,22 @@ public class ItemSlot : MonoBehaviour
     }
     public void OnClickEquipButton()
     {
-        GameManager.Instance.Player.Equip(index);
+        if (Player.curEquipItemSlot != null)
+        {
+            Player.curEquipItemSlot.equiped = false;
+            Player.UnEquip(Player.curEquipItemSlot);
+
+        }
+        equiped = true;
+        Player.Equip(this);
+        Set();
     }
 
     public void OnClickUnEquipButton()
     {
-        GameManager.Instance.Player.UnEquip(index);
+        equiped = false;
+        Player.UnEquip(this);
+        Set();
     }
     public void OnClickButton()
     {

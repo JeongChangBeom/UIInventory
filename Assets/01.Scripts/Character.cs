@@ -19,6 +19,7 @@ public class Character : MonoBehaviour
 
     public List<ItemData> inventory;
 
+    public ItemSlot curEquipItemSlot;
     public ItemData curEquipItem;
 
     public void Init(string name, float attackPower, float defensePower, float health, float critical, List<ItemData> inventory)
@@ -35,15 +36,6 @@ public class Character : MonoBehaviour
     private void Awake()
     {
         GameManager.Instance.Player = this;
-        AddItem();
-        AddItem();
-        AddItem();
-        AddItem();
-        AddItem();
-        AddItem();
-        AddItem();
-        AddItem();
-        AddItem();
     }
 
     public void SetName(string name)
@@ -98,74 +90,67 @@ public class Character : MonoBehaviour
         Critical += critical;
     }
 
-    public void AddItem()
+    public void Equip(ItemSlot slot)
     {
-        ItemData[] allItems = Resources.LoadAll<ItemData>("Items");
+        curEquipItemSlot = slot;
+        curEquipItem = inventory[slot.index];
 
-        if (allItems.Length == 0)
+        for (int i = 0; i < curEquipItem.values.Length; i++)
         {
-            return;
-        }
-
-        int randomIndex = Random.Range(0, allItems.Length);
-        ItemData randomItem = allItems[randomIndex];
-
-        inventory.Add(randomItem);
-    }
-
-    public void Equip(int index)
-    {
-        for (int i = 0; i < inventory[index].values.Length; i++)
-        {
-            EffType effType = inventory[index].values[i].valueType;
+            EffType effType = curEquipItem.values[i].valueType;
 
             switch (effType)
             {
                 case EffType.Attack:
-                    AttackPower += inventory[index].values[i].value;
-                    ItemAttackPower += inventory[index].values[i].value;
+                    AttackPower += curEquipItem.values[i].value;
+                    ItemAttackPower += curEquipItem.values[i].value;
                     break;
                 case EffType.Defense:
-                    DefensePower += inventory[index].values[i].value;
-                    ItemDefensePower += inventory[index].values[i].value;
+                    DefensePower += curEquipItem.values[i].value;
+                    ItemDefensePower += curEquipItem.values[i].value;
                     break;
                 case EffType.Health:
-                    Health += inventory[index].values[i].value;
-                    ItemHealth += inventory[index].values[i].value;
+                    Health += curEquipItem.values[i].value;
+                    ItemHealth += curEquipItem.values[i].value;
                     break;
                 case EffType.Critical:
-                    Critical += inventory[index].values[i].value;
-                    ItemCritical += inventory[index].values[i].value;
+                    Critical += curEquipItem.values[i].value;
+                    ItemCritical += curEquipItem.values[i].value;
                     break;
             }
         }
     }
 
-    public void UnEquip(int index)
+    public void UnEquip(ItemSlot slot)
     {
-        for (int i = 0; i < inventory[index].values.Length; i++)
+        curEquipItem = inventory[slot.index];
+
+        for (int i = 0; i < curEquipItem.values.Length; i++)
         {
-            EffType effType = inventory[index].values[i].valueType;
+            EffType effType = curEquipItem.values[i].valueType;
 
             switch (effType)
             {
                 case EffType.Attack:
-                    AttackPower -= inventory[index].values[i].value;
-                    ItemAttackPower -= inventory[index].values[i].value;
+                    AttackPower -= curEquipItem.values[i].value;
+                    ItemAttackPower -= curEquipItem.values[i].value;
                     break;
                 case EffType.Defense:
-                    DefensePower -= inventory[index].values[i].value;
-                    ItemDefensePower -= inventory[index].values[i].value;
+                    DefensePower -= curEquipItem.values[i].value;
+                    ItemDefensePower -= curEquipItem.values[i].value;
                     break;
                 case EffType.Health:
-                    Health -= inventory[index].values[i].value;
-                    ItemHealth -= inventory[index].values[i].value;
+                    Health -= curEquipItem.values[i].value;
+                    ItemHealth -= curEquipItem.values[i].value;
                     break;
                 case EffType.Critical:
-                    Critical -= inventory[index].values[i].value;
-                    ItemCritical -= inventory[index].values[i].value;
+                    Critical -= curEquipItem.values[i].value;
+                    ItemCritical -= curEquipItem.values[i].value;
                     break;
             }
         }
+
+        curEquipItemSlot = null;
+        curEquipItem = null;
     }
 }

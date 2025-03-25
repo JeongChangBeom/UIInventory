@@ -16,20 +16,40 @@ public class UIInventory : UIBase
     private void Start()
     {
         slots = new List<ItemSlot>();
-
-        for (int i = 0; i < GameManager.Instance.Player.inventory.Count; i++)
-        {
-            ItemSlot temp = Instantiate(slotPrefabs, slotPanel);
-            temp.data = GameManager.Instance.Player.inventory[i];
-            temp.index = i;
-            temp.uiInventory = this;
-
-            slots.Add(temp);
-        }
-
+        UpdateInventory();
         UpdateSlots();
 
         exitButton.onClick.AddListener(OnClickExitButton);
+
+        AddItem();
+        AddItem();
+        AddItem();
+        AddItem();
+        AddItem();
+        AddItem();
+        AddItem();
+        AddItem();
+        AddItem();
+        AddItem();
+        AddItem();
+        AddItem();
+    }
+
+    public void UpdateInventory()
+    {
+        for (int i = 0; i < GameManager.Instance.Player.inventory.Count; i++)
+        {
+            if (slots.Count <= i)
+            {
+                ItemSlot temp = Instantiate(slotPrefabs, slotPanel);
+                temp.data = GameManager.Instance.Player.inventory[i];
+                temp.index = i;
+                temp.uiInventory = this;
+
+                slots.Add(temp);
+            }
+        }
+        UpdateSlots();
     }
 
     public void UpdateSlots()
@@ -68,6 +88,23 @@ public class UIInventory : UIBase
 
         selectedItem = slots[index].data;
         selectedIndex = index;
+    }
+
+    public void AddItem()
+    {
+        ItemData[] allItems = Resources.LoadAll<ItemData>("Items");
+
+        if (allItems.Length == 0)
+        {
+            print("Resources 폴더에 아이템이 존재하지 않습니다.");
+            return;
+        }
+
+        int randomIndex = Random.Range(0, allItems.Length);
+        ItemData randomItem = allItems[randomIndex];
+
+        GameManager.Instance.Player.inventory.Add(randomItem);
+        UpdateInventory();
     }
 
     public void OnClickExitButton()
