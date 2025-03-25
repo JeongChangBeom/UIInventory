@@ -8,31 +8,14 @@ public class UIInventory : UIBase
     public List<ItemSlot> slots;
     public Transform slotPanel;
 
-    private ItemData selectedItem;
-    private int selectedIndex;
-
     [SerializeField] private Button exitButton;
 
     private void Start()
     {
         slots = new List<ItemSlot>();
         UpdateInventory();
-        UpdateSlots();
 
         exitButton.onClick.AddListener(OnClickExitButton);
-
-        AddItem();
-        AddItem();
-        AddItem();
-        AddItem();
-        AddItem();
-        AddItem();
-        AddItem();
-        AddItem();
-        AddItem();
-        AddItem();
-        AddItem();
-        AddItem();
     }
 
     public void UpdateInventory()
@@ -85,9 +68,6 @@ public class UIInventory : UIBase
                 slots[i].selected = false;
             }
         }
-
-        selectedItem = slots[index].data;
-        selectedIndex = index;
     }
 
     public void AddItem()
