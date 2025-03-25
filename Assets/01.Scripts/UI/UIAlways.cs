@@ -1,5 +1,7 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class UIAlways : MonoBehaviour
 {
@@ -10,13 +12,16 @@ public class UIAlways : MonoBehaviour
     [SerializeField] private TextMeshProUGUI expText;
     [SerializeField] private TextMeshProUGUI goldText;
 
+    [SerializeField] private Image expImage;
+
     private void Awake()
     {
         player = GameManager.Instance.Player;
     }
-    private void Start()
-    { 
+    private void Update()
+    {
         SetDisplayUI();
+        expImage.fillAmount = (float)player.CurExp / (float)player.MaxExp;
     }
 
     public void SetDisplayUI()

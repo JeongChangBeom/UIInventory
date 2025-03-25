@@ -6,7 +6,7 @@ public class Character : MonoBehaviour
     public string Name { get; private set; }
     public int Level { get; private set; } = 1;
     public int CurExp { get; private set; } = 0;
-    public int MaxExp { get; private set; } = 0;
+    public int MaxExp { get; private set; } = 10;
     public int Gold { get; private set; } = 0;
     public float AttackPower { get; private set; }
     public float ItemAttackPower { get; private set; } = 0;
@@ -70,22 +70,22 @@ public class Character : MonoBehaviour
         Gold += gold;
     }
 
-    public void UpAttackPower(int attackPower)
+    public void UpAttackPower(float attackPower)
     {
         AttackPower += attackPower;
     }
 
-    public void UpDefensePower(int defencePower)
+    public void UpDefensePower(float defencePower)
     {
         DefensePower += defencePower;
     }
 
-    public void UpHealth(int health)
+    public void UpHealth(float health)
     {
         Health += health;
     }
 
-    public void UpCritical(int critical)
+    public void UpCritical(float critical)
     {
         Critical += critical;
     }

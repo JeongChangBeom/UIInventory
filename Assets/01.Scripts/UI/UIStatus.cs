@@ -22,6 +22,10 @@ public class UIStatus : UIBase
     {
         exitButton.onClick.AddListener(OnClickExitButton);
     }
+    private void Update()
+    {
+        SetDisplayUI();
+    }
 
     public void SetDisplayUI()
     {
