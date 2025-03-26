@@ -117,10 +117,8 @@ public class UIInventory : UIBase
             int randomIndex = Random.Range(0, allItems.Length);
             ItemData randomItem = allItems[randomIndex];
 
-            GameManager.Instance.Player.inventory.Add(randomItem);
-            emptySlot.data = randomItem;
-
-            slots.Insert(emptySlot.index, emptySlot);
+            GameManager.Instance.Player.inventory.Insert(emptySlot.index,randomItem);
+            slots[emptySlot.index].data = randomItem;
 
             UpdateSlots();
             return;
@@ -136,27 +134,38 @@ public class UIInventory : UIBase
     {
         if (player.inventory.Count > 0)
         {
-            int randomIndex = Random.Range(0, player.inventory.Count);
+            List<int> checkList = new List<int>();
+
+            for (int i = 0; i < slots.Count; i++)
+            {
+                if (!slots[i].equiped && slots[i].data != null)
+                {
+                    checkList.Add(i);
+                }
+            }
+
+            if (checkList.Count == 0)
+            {
+                Debug.Log("장착한 아이템 이외의 아이템이 존재하지 않습니다.");
+                return;
+            }
+
+            int randomIndex = checkList[Random.Range(0, checkList.Count)];
             ItemSlot randomSlot = slots[randomIndex];
 
-            while (randomSlot.equiped == true)
-            {
-                if (player.inventory.Count <= 1)
-                {
-                    Debug.Log("장착한 아이템 이외의 아이템이 존재하지 않습니다.");
-                    return;
-                }
+            // 인벤토리에서 randomSlot에 존재하는 아이템과 동일한 아이템의 index를 찾음
+            int inventoryIndex = player.inventory.IndexOf(randomSlot.data);
 
-                randomIndex = Random.Range(0, player.inventory.Count);
-                randomSlot = slots[randomIndex];
+            // randomSlot의 아이템이 inventory에 존재하는 지 확인 후 존재하면 제거
+            if (inventoryIndex >= 0)
+            {
+                player.inventory.RemoveAt(inventoryIndex);
             }
 
             randomSlot.data = null;
             randomSlot.selected = false;
-
-            player.inventory.RemoveAt(randomIndex);
+            slots[randomIndex].data = null;
             UpdateSlots();
-            slots.RemoveAt(randomIndex);
         }
         else
         {

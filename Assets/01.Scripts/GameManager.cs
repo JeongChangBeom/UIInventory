@@ -14,7 +14,7 @@ public class GameManager : Singleton<GameManager>
     private void Awake()
     {
         player = FindObjectOfType<Character>();
-        SetData("ChangTiger", 10f, 5f, 100f, 35f,new List<ItemData>());
+        SetData("ChangTiger", 10f, 5f, 100f, 35f,new List<ItemData>(30));
     }
 
     /// <summary>
