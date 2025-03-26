@@ -2189,7 +2189,7 @@ MonoBehaviour:
   slotPrefabs: {fileID: 2356061719281253873, guid: fc707b1a52ffa1d428177cbd4158cef3, type: 3}
   slots: []
   slotPanel: {fileID: 1765284949}
-  initSlotCount: 12
+  initSlotCount: 30
   exitButton: {fileID: 1734694836}
 --- !u!114 &747477657
 MonoBehaviour:
