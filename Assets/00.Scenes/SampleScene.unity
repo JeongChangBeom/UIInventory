@@ -2030,7 +2030,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &738023305
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2148,7 +2148,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &747477655
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2550,7 +2550,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd1f8c76c9ee5944b937868f06f164e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiInventory: {fileID: 747477656}
 --- !u!4 &860703973
 Transform:
   m_ObjectHideFlags: 0
@@ -4062,6 +4061,7 @@ MonoBehaviour:
   levelText: {fileID: 293323800}
   expText: {fileID: 840380972}
   goldText: {fileID: 396348206}
+  expImage: {fileID: 1435942711}
 --- !u!1 &1726257477
 GameObject:
   m_ObjectHideFlags: 0
@@ -4402,7 +4402,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 3}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1765284950
 MonoBehaviour:

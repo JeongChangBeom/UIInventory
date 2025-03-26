@@ -93,7 +93,7 @@ public class Character : MonoBehaviour
     public void Equip(ItemSlot slot)
     {
         curEquipItemSlot = slot;
-        curEquipItem = inventory[slot.index];
+        curEquipItem = slot.data;
 
         for (int i = 0; i < curEquipItem.values.Length; i++)
         {
@@ -123,7 +123,7 @@ public class Character : MonoBehaviour
 
     public void UnEquip(ItemSlot slot)
     {
-        curEquipItem = inventory[slot.index];
+        curEquipItem = slot.data;
 
         for (int i = 0; i < curEquipItem.values.Length; i++)
         {

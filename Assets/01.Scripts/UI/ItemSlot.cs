@@ -59,15 +59,12 @@ public class ItemSlot : MonoBehaviour
     {
         icon.gameObject.SetActive(true);
         icon.sprite = data.icon;
-
-        equipStateText.SetActive(equiped);
     }
 
     public void Clear()
     {
         data = null;
         icon.gameObject.SetActive(false);
-        equipStateText.SetActive(false);
     }
     public void OnClickEquipButton()
     {

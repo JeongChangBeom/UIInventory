@@ -1,12 +1,12 @@
 using UnityEngine;
 using UnityEditor;
-using Unity.VisualScripting;
 
 public class TestEditorWindow : EditorWindow
 {
     private Character player;
     private UIInventory uiInventory;
     float amount = 0;
+    string str = "";
 
     [MenuItem("Window/Test Editor")]
     public static void ShowWindow()
@@ -21,6 +21,15 @@ public class TestEditorWindow : EditorWindow
 
         if (player != null)
         {
+            str = EditorGUILayout.TextField("변경할 이름", str);
+
+            if (GUILayout.Button("이름 변경"))
+            {
+                player.SetName(str);
+            }
+
+            GUILayout.Space(20);
+
             amount = EditorGUILayout.FloatField("증가량", amount);
 
             if (GUILayout.Button("공격력 증가"))
@@ -64,6 +73,11 @@ public class TestEditorWindow : EditorWindow
             if (GUILayout.Button("랜덤 아이템 획득"))
             {
                 uiInventory.AddItem();
+            }
+
+            if (GUILayout.Button("랜덤 아이템 버리기"))
+            {
+                uiInventory.DropItem();
             }
         }
 
