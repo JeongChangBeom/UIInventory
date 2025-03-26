@@ -34,6 +34,10 @@ public class UIManager : Singleton<UIManager>
         ChangeState(UIState.Inventory);
     }
 
+    /// <summary>
+    /// 현재 UI의 상태에 따른 UI를 출력함
+    /// </summary>
+    /// <param name="state"> 현재 UI 상태 </param>
     public void ChangeState(UIState state)
     {
         uiMainMenu.SetActive(state);
