@@ -90,6 +90,10 @@ public class Character : MonoBehaviour
         Critical += critical;
     }
 
+    /// <summary>
+    /// 장착한 아이템의 옵션을 플레이어의 스텟에 반영
+    /// </summary>
+    /// <param name="slot"> 장착한 아이템의 슬롯 </param>
     public void Equip(ItemSlot slot)
     {
         curEquipItemSlot = slot;
@@ -121,6 +125,10 @@ public class Character : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// 해제한 아이템의 옵션을 플레이어의 스텟에서 제거
+    /// </summary>
+    /// <param name="slot"> 장착했던 아이템의 슬롯 </param>
     public void UnEquip(ItemSlot slot)
     {
         curEquipItem = slot.data;

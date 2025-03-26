@@ -7,7 +7,7 @@ public class UIInventory : UIBase
     public ItemSlot slotPrefabs;
     public List<ItemSlot> slots;
     public Transform slotPanel;
-    public int initSlotCount = 12;
+    public int initSlotCount = 30;
 
     [SerializeField] private Button exitButton;
 
@@ -22,6 +22,9 @@ public class UIInventory : UIBase
         exitButton.onClick.AddListener(OnClickExitButton);
     }
 
+    /// <summary>
+    /// 특정 개수만큼 slot을 생성
+    /// </summary>
     public void InitInventory()
     {
         for (int i = 0; i < initSlotCount; i++)
@@ -36,6 +39,9 @@ public class UIInventory : UIBase
         UpdateSlots();
     }
 
+    /// <summary>
+    /// 현재 슬롯들의 상태를 초기화
+    /// </summary>
     public void UpdateSlots()
     {
         for (int i = 0; i < slots.Count; i++)
@@ -51,6 +57,10 @@ public class UIInventory : UIBase
         }
     }
 
+    /// <summary>
+    /// 인벤토리에서 슬롯을 클릭했을 때
+    /// </summary>
+    /// <param name="index"> 선택한 아이템의 주소 </param>
     public void SelectItem(int index)
     {
         if (slots[index].data == null)
@@ -71,6 +81,10 @@ public class UIInventory : UIBase
         }
     }
 
+    /// <summary>
+    /// 인벤토리에서 빈 슬롯을 찾아줌
+    /// </summary>
+    /// <returns> 빈 슬롯이 존재하면 빈슬롯 반환, 없으면 null 반환 </returns>
     private ItemSlot GetEmptySlot()
     {
         for (int i = 0; i < slots.Count; i++)
@@ -83,7 +97,9 @@ public class UIInventory : UIBase
         return null;
     }
 
-
+    /// <summary>
+    /// Resources폴더에서 랜덤으로 하나의 아이템 데이터를 가져와서 빈 슬롯에 넣음
+    /// </summary>
     public void AddItem()
     {
         ItemData[] allItems = Resources.LoadAll<ItemData>("Items");
@@ -113,6 +129,9 @@ public class UIInventory : UIBase
         Debug.Log("인벤토리가 꽉찼습니다.");
     }
 
+    /// <summary>
+    /// 인벤토리에서 장착한 아이템 이외의 랜덤한 아이템 하나를 버림
+    /// </summary>
     public void DropItem()
     {
         if (player.inventory.Count > 0)

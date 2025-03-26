@@ -66,6 +66,10 @@ public class ItemSlot : MonoBehaviour
         data = null;
         icon.gameObject.SetActive(false);
     }
+
+    /// <summary>
+    /// 장착 버튼을 누르면 현재 착용하고 있는 장비가 해제 되고 지금 선택한 장비가 장착됨
+    /// </summary>
     public void OnClickEquipButton()
     {
         if (Player.curEquipItemSlot != null)

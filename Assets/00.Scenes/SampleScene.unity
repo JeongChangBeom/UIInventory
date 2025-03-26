@@ -2030,7 +2030,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &738023305
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2148,7 +2148,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &747477655
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2189,6 +2189,7 @@ MonoBehaviour:
   slotPrefabs: {fileID: 2356061719281253873, guid: fc707b1a52ffa1d428177cbd4158cef3, type: 3}
   slots: []
   slotPanel: {fileID: 1765284949}
+  initSlotCount: 12
   exitButton: {fileID: 1734694836}
 --- !u!114 &747477657
 MonoBehaviour:
@@ -4402,7 +4403,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 3}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1765284950
 MonoBehaviour:
